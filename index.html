@@ -10,18 +10,24 @@
   <!-- Site Properties -->
   <title>Mini Store</title>
 
-  <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css" />
-  <link rel="stylesheet" type="text/css" href="css/app.css" />
+  <link rel="stylesheet" type="text/css" href="assets/lib/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="assets/css/app.css" />
 </head>
 
 <body>
-  <script type="text/javascript" src="lib/jquery.min.js"></script>
-  <script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="lib/angular.min.js"></script>
-  <script type="text/javascript" src="app/app.js"></script>
-  <script type="text/javascript" src="js/utils.js"></script>
+  <script type="text/javascript" src="assets/lib/jquery.min.js"></script>
+  <script type="text/javascript" src="assets/lib/bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="assets/lib/angular.min.js"></script>
+  <script type="text/javascript" src="assets/lib/angular-route.min.js"></script>
+  <script type="text/javascript" src="assets/lib/angular-resource.min.js"></script>
+  <script type="text/javascript" src="app/app.module.js"></script>
+  <script type="text/javascript" src="app/app.routes.js"></script>
+  <script type="text/javascript" src="app/components/products/productsController.js"></script>
+  <!-- <script type="text/javascript" src="app/components/products/productsService.js"></script> -->
+  <!-- <script type="text/javascript" src="app/components/products/product.js"></script> -->
+  <script type="text/javascript" src="assets/js/utils.js"></script>
 
-  <div class="container" ng-controller="StoreController as storeCtrl">
+  <div class="container">
     <div class="header clearfix">
       <nav>
         <ul class="nav nav-pills pull-right">
@@ -34,126 +40,15 @@
     </div>
 
     <div class="jumbotron">
-      <h1>e.life challange</h1>
-      <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-      <p><a class="btn btn-lg btn-success" href="https://github.com/romeromfm/ministore" role="button">GitHub project</a></p>
+      <h2>e.life challange</h2>
+      <p class="lead">This simple project is part of a test from the application to e.life. A simple app with frontend in AngularJS consuming from a backend in Rails.</p>
+      <a class="btn btn-lg btn-danger" href="https://github.com/romeromfm/ministore-api" role="button" target="_blank">Rails Github project</a>
+
+      <a class="btn btn-lg btn-primary" href="https://github.com/romeromfm/ministore-client" role="button" target="_blank">AngularJS GitHub project</a>
     </div>
 
     <div class="row">
-      <div 
-        class="col-xs-12 col-sm-12 col-md-12 col-lg-6" 
-        ng-hide="storeCtrl.product.soldOut" 
-        ng-repeat="product in storeCtrl.products | orderBy:'price'"
-      >
-        <div class="thumbnail">
-          <img ng-src="{{ product.images[0].full}}" alt="..." width="150">
-
-          <div class="caption">
-            <h3 class="media-heading">{{ product.name }}</h3>
-            <p>{{ product.description | cut:true:100:'...' }}</p>
-            <span class="">{{ product.price | currency }}</span>
-          </div>
-
-          <button 
-            class="btn btn-default" 
-            ng-show="product.canPurchase" 
-            role="button"
-          >
-            Buy
-          </button>
-        </div>
-
-        <section ng-controller="PanelController as panelCtrl">
-          <ul class="nav nav-pills">
-            <li ng-class="{ active: panelCtrl.isSelected(1)}"> 
-              <a href ng-click="panelCtrl.selectTab(1)"> Description </a> 
-            </li>
-            
-            <li ng-class="{ active: panelCtrl.isSelected(2)}"> 
-              <a href ng-click="panelCtrl.selectTab(2)"> Specifications </a> 
-            </li>
-            
-            <li ng-class="{ active: panelCtrl.isSelected(3)}"> 
-              <a href ng-click="panelCtrl.selectTab(3)"> Reviews </a> 
-            </li>
-          </ul>
-
-          <div class="panel" ng-show="panelCtrl.isSelected(1)">           
-            <blockquote>
-              <p> {{ product.description }} </p>
-            </blockquote>
-          </div>
-
-          <div class="panel" ng-show="panelCtrl.isSelected(2)">
-            <blockquote>
-              <p> {{ product.price | currency }} </p>
-            </blockquote>
-          </div>
-
-          <div class="panel" ng-show="panelCtrl.isSelected(3)">
-            <div ng-repeat="review in product.reviews">
-              <blockquote>
-                <b>{{ review.stars }} Stars </b>
-                <p> {{ review.body }} </p>
-                <cite class="text-muted"> By: {{ review.author }} </cite>
-              </blockquote>
-            </div>
-
-            <form 
-              name="reviewForm" 
-              ng-controller="ReviewController as reviewCtrl" 
-              ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)"
-              novalidate
-            >
-              <blockquote>
-                <b>{{ reviewCtrl.review.stars }} Stars </b>
-                <p> {{ reviewCtrl.review.body }} </p>
-                <cite class="text-muted"> By: {{ reviewCtrl.review.author }} </cite>
-              </blockquote>
-
-              <h4>Submit a Review</h4>
-              <div class="form-group">
-                <label for="stars_select">Stars:</label>
-                <select 
-                  id="stars-select" 
-                  class="form-control" 
-                  ng-model="reviewCtrl.review.stars"
-                  ng-options="stars for stars in [5,4,3,2,1]"
-                  title="Stars"
-                  required
-                >
-                  <option value="">Rate the product</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="sreview_textarea">Review:</label>
-                <textarea 
-                  id="review_textarea" 
-                  class="form-control" 
-                  ng-model="reviewCtrl.review.body" 
-                  placeholder="Your review here" 
-                  required
-                >
-                </textarea>
-              </div>
-
-              <div class="form-group">
-                <label>by:</label>
-                <input 
-                  class="form-control" 
-                  ng-model="reviewCtrl.review.author" 
-                  placeholder="E-mail" 
-                  required
-                  type="email" 
-                />
-              </div>
-
-              <input type="submit" value="Submit" class="btn btn-default" />
-            </form>
-          </div>
-        </section>
-      </div>      
+      <div ng-view=""></div>
     </div>
 
 
