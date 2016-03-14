@@ -3,21 +3,5 @@
   ng-hide="productsCtrl.product.soldOut"
   ng-repeat="product in productsCtrl.products | orderBy:'price'"
 >
-  <div class="thumbnail">
-    <img ng-src="{{ product.image}}" alt="..." width="150">
-
-    <div class="caption">
-      <h3 class="media-heading">{{ product.name }}</h3>
-      <p>{{ product.description | cut:true:100:'...' }}</p>
-      <span class="">{{ product.price | currency }}</span>
-    </div>
-
-    <button
-    class="btn btn-default"
-    ng-show="product.canPurchase"
-    role="button"
-    >
-    Buy
-  </button>
-  </div>
+  <ms-card></ms-card>  
 </div>
