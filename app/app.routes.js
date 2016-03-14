@@ -5,14 +5,14 @@ angular.module('ministore').config(function($routeProvider) {
       redirectTo: '/products'
     })
     .when('/products', {
-      templateUrl: 'app/components/products/templates/index.html',
-      controller: 'ProductsController',
-      controllerAs: 'productsCtrl'
+      templateUrl: 'app/components/product/templates/index.html',
+      controller: 'ProductController',
+      controllerAs: 'productCtrl'
     })
     .when('/products/:id', {
-      templateUrl: 'app/components/products/templates/show.html',
-      controller: 'ProductsController',
-      controllerAs: 'productsCtrl'
+      templateUrl: 'app/components/product/templates/show.html',
+      controller: 'ProductController',
+      controllerAs: 'productCtrl'
     })
     .otherwise({ redirectTo: '/'});
 });
