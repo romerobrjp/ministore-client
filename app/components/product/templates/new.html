@@ -1,35 +1,35 @@
-<div class="col-md-12 col-lg-12" ng-init="initProduct()">
+<div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-2 col-lg-offset-2" ng-init="initProduct()">
     <form id="new_product_form" class="form form-horizontal" ng-submit="save()">
         <div class="row">
-            <div class="col-md-4 form-group">
+            <div class="col-md-10 col-lg-10 form-group">
                 <label>Title</label>
                 <input ng-model="product.title" class="form-control" />
             </div>
         </div>
 
         <div class="row">
-          <div class="col-md-4 form-group">
+          <div class="col-md-10 col-lg-10 form-group">
             <label>Price</label>
             <input ng-model="product.price" class="form-control" />
           </div>
         </div>
 
         <div class="row">
-          <div class="col-md-4 form-group">
+          <div class="col-md-10 col-lg-10 form-group">
             <label>Image URL (put an imagem from the internet)</label>
             <input ng-model="product.image" class="form-control" />
           </div>
         </div>
 
         <div class="row">
-            <div class="col-md-4 form-group">
+            <div class="col-md-10 col-lg-10 form-group">
                 <label>Description</label>
                 <textarea class="form-control" rows="3" ng-model="product.description"></textarea>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-4 form-group">
+            <div class="col-md-10 col-lg-10 form-group">
                 <button type="submit" class="btn btn-primary">Save</button>
             </div>
         </div>

@@ -11,23 +11,12 @@ body > .container {
 .footer {
   padding-top: 20px;
   border-top: 1px solid #e5e5e5;
-  margin-top: 30px; 
+  margin-top: 30px;
 }
-
-/*.ui.container > h1 {
-  font-size: 3em;
-  text-align: center;
-  font-weight: normal;
-}
-.ui.container > h2.dividing.header {
-  font-size: 2em;
-  font-weight: normal;
-  margin: 4em 0em 3em;
-}*/
 
 /*.description {
   overflow: hidden;
-  white-space: nowrap; 
+  white-space: nowrap;
   text-overflow: ellipsis;
 }*/
 
