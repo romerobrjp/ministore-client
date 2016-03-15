@@ -12,5 +12,9 @@ angular.module('ministore').config(['$routeProvider', function($routeProvider) {
       templateUrl: 'app/components/product/templates/show.html',
       controller: 'ProductController'
     })
+    .when('/product/new', {
+      templateUrl: 'app/components/product/templates/new.html',
+      controller: 'ProductController'
+    })
     .otherwise({ redirectTo: '/'});
 }]);
