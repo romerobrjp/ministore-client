@@ -1,5 +1,4 @@
 angular.module('ministore').config(['$routeProvider', function($routeProvider) {
-  console.log(' >>> routes loaded');
   $routeProvider
     .when('/', {
       redirectTo: '/products'

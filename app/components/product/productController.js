@@ -19,7 +19,8 @@ angular.module('ministore')
 
   //new
   $scope.save = function() {
-    ProductResource.save($scope.product, function() {
+    $scope.product.active = "true";
+    ProductResource.save({product: $scope.product}, function() {
       window.location.href = '';
     });
   }
@@ -31,7 +32,10 @@ angular.module('ministore')
 
   //update
   $scope.update = function() {
-    $scope.product.$update({id: $scope.product.id}, function() {
+    $scope.product.active = "true";
+    var productWrapper = {};
+    productWrapper.product = $scope.product;
+    $scope.product.$update(productWrapper, function() {
       window.location.href = '#/products/' + $scope.product.id;
     });
   }
