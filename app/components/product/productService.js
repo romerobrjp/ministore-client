@@ -1,7 +1,6 @@
-angular.module('ministore').factory('ProductService', function ProductServiceFactory($resource, $http) {
-  //without resource
+angular.module('ministore').factory('ProductService', function ProductServiceFactory($http) {
   return {
-    all: function() {
+    all: function(callback) {
       return $http({method: 'GET', url: 'http://localhost:3000/api/v1/products'});
     },
     find: function(id) {

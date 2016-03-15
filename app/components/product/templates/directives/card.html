@@ -1,5 +1,5 @@
 <h3 class="media-heading">{{ product.title }}</h3>
-<img ng-src="{{ product.image }}" alt="{{ product.title }}" width="150">
+<img ng-src="{{product.image || 'http://agc139.com/Content/Product/default_product.jpg'}}" alt="..." width="150">
 <div class="caption">
   <p>{{ product.description | cut:true:100:'...' }}</p>
   <span class="">{{ product.price | currency }}</span>

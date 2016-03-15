@@ -1,20 +1,24 @@
 <div
-  class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-centered text-center"
+  class="col-xs-12 col-sm-12 col-md-12 col-lg-12"
   ng-init="show()"
 >
-  <div class="thumbnail">
+  <div class="thumbnail text-center">
     <ms-card></ms-card>
 
     <a
-      class="btn btn-primary"
-      href="https://github.com/romeromfm/ministore-client"
-      ng-show="product.active"
-      ng-href="'#/products/product.id"
-      role="button">Edit</a>
-    <a
       class="btn btn-warning"
-      ng-show="product.active"
+      ng-href="#/product/edit/{{product.id}}"
+      role="button"
+    >
+      Edit
+    </a>
+
+    <a
+      class="btn btn-danger"
       ng-click="delete(product)"
-      role="button">Delete</a>
+      role="button"
+    >
+      Delete
+    </a>
   </div>
 </div>
