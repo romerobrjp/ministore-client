@@ -23,8 +23,9 @@
   <script type="text/javascript" src="app/app.module.js"></script>
   <script type="text/javascript" src="app/app.routes.js"></script>
   <script type="text/javascript" src="app/components/product/productController.js"></script>
-  <script type="text/javascript" src="app/components/product/product.js"></script>
-  <script type="text/javascript" src="app/components/product/directives/card.js"></script>
+  <script type="text/javascript" src="app/components/product/productService.js"></script>
+  <!-- <script type="text/javascript" src="app/components/product/productResource.js"></script> -->
+  <script type="text/javascript" src="app/components/product/templates/directives/card.js"></script>
   <script type="text/javascript" src="assets/js/utils.js"></script>
 
   <div class="container">
@@ -47,7 +48,7 @@
       <a class="btn btn-lg btn-primary" href="https://github.com/romeromfm/ministore-client" role="button" target="_blank">AngularJS GitHub project</a>
     </div>
 
-    <div class="row">
+    <div class="row" ng-controller="ProductController as productCtrl">
       <div ng-view=""></div>
     </div>
 
