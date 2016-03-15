@@ -33,9 +33,7 @@ angular.module('ministore')
   //update
   $scope.update = function() {
     $scope.product.active = "true";
-    var productWrapper = {};
-    productWrapper.product = $scope.product;
-    $scope.product.$update(productWrapper, function() {
+    $scope.product.$update({id: $scope.product.id}, function() {
       window.location.href = '#/products/' + $scope.product.id;
     });
   }
