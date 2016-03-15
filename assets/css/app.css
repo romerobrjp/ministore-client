@@ -27,3 +27,11 @@ body > .container {
 .ng-valid.ng-dirty {
   border-color: #78FA89;
 }
+
+ms-card img {
+  height: 200px !important;
+}
+
+.thumbnail {
+  height: 400px !important;
+}
