@@ -11,20 +11,24 @@
   <title>Mini Store</title>
 
   <link rel="stylesheet" type="text/css" href="assets/libs/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="assets/libs/loading-bar.min.css" media="all" />
   <link rel="stylesheet" type="text/css" href="assets/css/app.css" />
 </head>
 
 <body>
+  <!-- Vendor -->
   <script type="text/javascript" src="assets/libs/jquery.min.js"></script>
   <script type="text/javascript" src="assets/libs/bootstrap/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="assets/libs/angular.min.js"></script>
   <script type="text/javascript" src="assets/libs/angular-route.min.js"></script>
   <script type="text/javascript" src="assets/libs/angular-resource.min.js"></script>
+  <script type="text/javascript" src="assets/libs/loading-bar.min.js"></script>
+  <!-- app -->
   <script type="text/javascript" src="app/app.module.js"></script>
   <script type="text/javascript" src="app/app.routes.js"></script>
   <script type="text/javascript" src="app/components/product/productController.js"></script>
   <script type="text/javascript" src="app/components/product/productService.js"></script>
-  <!-- <script type="text/javascript" src="app/components/product/productResource.js"></script> -->
+  <script type="text/javascript" src="app/components/product/productResource.js"></script>
   <script type="text/javascript" src="app/components/product/templates/directives/card.js"></script>
   <script type="text/javascript" src="assets/js/utils.js"></script>
 
@@ -43,12 +47,11 @@
     <div class="jumbotron">
       <h2>e.life challange</h2>
       <p class="lead">This simple project is part of a test from the application to e.life. A simple app with frontend in AngularJS consuming from a backend in Rails.</p>
-      <a class="btn btn-lg btn-danger" href="https://github.com/romeromfm/ministore-api" role="button" target="_blank">Rails Github project</a>
-
-      <a class="btn btn-lg btn-primary" href="https://github.com/romeromfm/ministore-client" role="button" target="_blank">AngularJS GitHub project</a>
+      <a class="btn btn-danger" href="https://github.com/romeromfm/ministore-api" role="button" target="_blank">Rails Github project</a>
+      <a class="btn btn-primary" href="https://github.com/romeromfm/ministore-client" role="button" target="_blank">AngularJS GitHub project</a>
     </div>
 
-    <div class="row" ng-controller="ProductController as productCtrl">
+    <div class="row" ng-controller="ProductController as productCtrl" ng-init="list()">
       <div ng-view=""></div>
     </div>
 

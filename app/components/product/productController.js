@@ -1,48 +1,22 @@
 angular.module('ministore')
-.controller('ProductController', ['$scope', '$routeParams', 'ProductService', function($scope, $routeParams, ProductService) {
-  // --- using ngResource ---
+.controller('ProductController',
+  ['$scope', '$routeParams', 'ProductService', 'ProductResource',
+  function($scope, $routeParams, ProductService, ProductResource) {
 
   //list all
-  //$scope.products = Product.query();
+  $scope.list = function() {
+    $scope.products = ProductResource.query();
+  }
 
   //find one
-  //$scope.product = Product.get({id: $routeParams.id});
-
-  //create
-  // $scope.product = new Product();
-  // $scope.saveProduct = function(product) {
-  //   $scope.errors = null;
-  //   $scope.updating = true;
-  //   product.$save(product)
-  //   .catch(function(product) {
-  //     $scope.errors = [product.data.error];
-  //   })
-  //   .error(function(data, status) {
-  //     $scope.updating = false;
-  //   });
-  // }
+  $scope.show = function() {
+    $scope.product = ProductResource.get({id: $routeParams.id});
+  }
 
   //delete
-  // $scope.deleteProduct = function(product) {
-  //   Product.$delete(product);
-  // }
-
-  // --- without ngResource ---
-  ProductService.all()
-  .success(function(data, status) {
-    console.log(' >>> controller.all');
-    $scope.products = data;
-    console.log('all operation: ' + status);
-  })
-  .error(function(data, status) {
-    console.log('all operation: ' + status);
-  });
-
-  // ProductService.create(product)
-  // .catch(function(product) {
-  //   $scope.errors = [product.data.error];
-  // })
-  // .error(function(data, status) {
-  //   $scope.updating = false;
-  // });
+  $scope.delete = function(product) {
+    ProductResource.remove({id: product.id}, function() {
+      window.href.location = '';
+    });
+  }
 }]);
