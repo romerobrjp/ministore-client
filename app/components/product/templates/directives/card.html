@@ -1,17 +1,6 @@
-<div class="thumbnail">
-  <img ng-src="{{ product.image}}" alt="..." width="150">
-  {{ teste }}
-  <div class="caption">
-    <h3 class="media-heading">{{ name }}</h3>
-    <p>{{ description | cut:true:100:'...' }}</p>
-    <span class="">{{ price | currency }}</span>
-  </div>
-
-  <button
-    class="btn btn-default"
-    ng-show="product.canPurchase"
-    role="button"
-    >
-    Buy
-  </button>
+<h3 class="media-heading">{{ product.title }}</h3>
+<img ng-src="{{ product.image }}" alt="{{ product.title }}" width="150">
+<div class="caption">
+  <p>{{ product.description | cut:true:100:'...' }}</p>
+  <span class="">{{ product.price | currency }}</span>
 </div>

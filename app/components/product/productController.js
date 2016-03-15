@@ -1,12 +1,24 @@
 angular.module('ministore')
-.controller('ProductController', ['$scope', '$routeParams', 'ProductService', function($scope, $routeParams, ProductService) {
+.controller('ProductController',
+  ['$scope', '$routeParams', 'ProductResource', '$routeParams', 'ProductService',
+  function($scope, $routeParams, ProductResource, $routeParams, ProductService) {
   // --- using ngResource ---
 
   //list all
-  //$scope.products = Product.query();
+  // $scope.products = ProductResource.get();
 
   //find one
-  //$scope.product = Product.get({id: $routeParams.id});
+  // $scope.product = ProductResource.get({id: $routeParams.id}, function() {
+  //   console.log(' >>> ' + typeof $scope)
+  // });
+
+  //delete
+  $scope.delete = function(product) {
+    ProductResource.delete({id: product.id}, function() {
+      console.log(' >>> deletando: ' + product.id );
+    });
+    window.location.href = ''; //redirect to home
+  };
 
   //create
   // $scope.product = new Product();
@@ -32,11 +44,33 @@ angular.module('ministore')
   .success(function(data, status) {
     console.log(' >>> controller.all');
     $scope.products = data;
-    console.log('all operation: ' + status);
+    console.log(' >>> all operation: ' + status);
   })
   .error(function(data, status) {
     console.log('all operation: ' + status);
   });
+
+  $scope.show = function() {
+    ProductService.find($routeParams.id)
+    .success(function(data, status) {
+      console.log(' >>> controller.find');
+      $scope.product = data;
+      console.log(' >>> all operation: ' + status);
+    })
+    .error(function(data, status) {
+      console.log('all operation: ' + status);
+    });
+  }
+
+  // $scope.delete = function() {
+  //   todoService.delete($scope.todoList[index], function(response, status) {
+  //       if (status === 200) {
+  //           $scope.listTodo();
+  //       } else {
+  //           console.log("Erro ao deletar todo");
+  //       }
+  //   });
+  // }
 
   // ProductService.create(product)
   // .catch(function(product) {
