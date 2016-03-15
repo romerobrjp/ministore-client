@@ -3,9 +3,9 @@ angular.module('ministore')
   ['$scope', '$routeParams', 'ProductService', 'ProductResource',
   function($scope, $routeParams, ProductService, ProductResource) {
 
-    $scope.initProduct = function() {
-      $scope.product = {};
-    }
+  $scope.initProduct = function() {
+    $scope.product = {};
+  }
 
   //list all
   $scope.list = function() {
@@ -20,14 +20,26 @@ angular.module('ministore')
   //new
   $scope.save = function() {
     ProductResource.save($scope.product, function() {
-      window.href.location = '';
+      window.location.href = '';
+    });
+  }
+
+  //prepareEdit
+  $scope.prepareEdit = function() {
+    $scope.product = ProductResource.get({id: $routeParams.id});
+  }
+
+  //update
+  $scope.update = function() {
+    $scope.product.$update({id: $scope.product.id}, function() {
+      window.location.href = '#/products/' + $scope.product.id;
     });
   }
 
   //delete
   $scope.delete = function(product) {
     ProductResource.delete({id: product.id}, function() {
-      window.href.location = '';
+      window.location.href = '';
     });
   }
 }]);

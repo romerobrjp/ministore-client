@@ -16,5 +16,9 @@ angular.module('ministore').config(['$routeProvider', function($routeProvider) {
       templateUrl: 'app/components/product/templates/new.html',
       controller: 'ProductController'
     })
+    .when('/product/edit/:id', {
+      templateUrl: 'app/components/product/templates/edit.html',
+      controller: 'ProductController'
+    })
     .otherwise({ redirectTo: '/'});
 }]);
