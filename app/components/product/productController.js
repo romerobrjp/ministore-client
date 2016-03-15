@@ -1,7 +1,7 @@
 angular.module('ministore')
 .controller('ProductController',
-  ['$scope', '$routeParams', 'ProductService', 'ProductResource',
-  function($scope, $routeParams, ProductService, ProductResource) {
+  ['$scope', '$routeParams', 'ProductResource',
+  function($scope, $routeParams, ProductResource) {
 
   $scope.initProduct = function() {
     $scope.product = {};

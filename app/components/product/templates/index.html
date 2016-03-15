@@ -1,6 +1,4 @@
 <div ng-init="list()">
-  <!-- <h6><code>rotate</code> defaulted to <code>true</code> and <code>force-ellipses</code> set to <code>true</code>:</h6>
-  <uib-pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" force-ellipses="true"></uib-pagination> -->
     <div
       class="col-xs-12 col-sm-6 col-md-4 col-lg-3"
       ng-repeat="product in products | orderBy:'price'"
@@ -17,5 +15,4 @@
         </a>
       </div>
     </div>
-  </uib-pagination>
 </div>
