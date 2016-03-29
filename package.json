@@ -14,5 +14,12 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/romeromfm/ministore-client/issues"
+  },
+  "dependencies": {
+    "express": "^4.13.4",
+    "gzippo": "^0.2.0"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5"
   }
 }
